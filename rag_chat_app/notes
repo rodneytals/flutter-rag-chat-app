@@ -1,0 +1,11 @@
+docker compose logs tunnel | Select-String "trycloudflare.com"
+
+cd "C:\Users\rodne\Desktop\4 MONTHS JOURNEY\MONTH4-2"
+docker compose ps
+docker compose logs --since=10m rag | Select-Object -Last 80
+docker compose logs --since=30m tunnel | Select-String "trycloudflare.com|error|failed"
+
+docker compose --profile tunnel up -d --force-recreate --no-deps tunnel
+
+python tunnel_tools.py
+docker compose up -d --force-recreate --no-deps watchdog
